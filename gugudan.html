@@ -18,7 +18,7 @@
                     };
                 }
 
-                onSubmit = (e) => {
+                onSubmit = (e) => { //gugudan submit 후 동작 
                         e.preventDefault();
                         if(parseInt(this.state.value)=== this.state.first * this.state.second){
                             this.setState ({
@@ -35,7 +35,7 @@
                         }
                     };
 
-                onChange = (e) => {
+                onChange = (e) => { //값이 변경될 때 타겟 벨류 
                      this.setState({value : e.target.value}) ;
                 }; 
 

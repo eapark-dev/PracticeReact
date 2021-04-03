@@ -8,8 +8,8 @@
         <script>
             const e = React.createElement;
 
-            class LikeButton extends React.Component {
-                constructor(props) {
+            class LikeButton extends React.Component { //클래스 하나가 컴포넌트 하나
+                constructor(props) { //constructor 안에 상태를 바꾸면 자동으로 텍스트 문구가 바뀔 수 있음
                     super(props);
                     this.state = {
                         liked : false,
@@ -17,7 +17,9 @@
                 }
 
                 render() {
-                    return e('button',{ onClick : () => { this.setState({ liked : true })}, type : 'submit'},'Like'); // <button type="submit">Like</button>
+                    return e('button',{ onClick : () => { this.setState({ liked : true })}, type : 'submit'},
+                    this.state.liked === true ? 'Liked' : 'Like',
+                     ); // <button type="submit">Like</button>
                 }
             }
         </script>

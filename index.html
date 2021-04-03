@@ -3,5 +3,26 @@
         <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     </head>
-    <body></body>
+    <body>
+        <div id="root"></div> <!--likebutton을 root안에 담기-->
+        <script>
+            const e = React.createElement;
+
+            class LikeButton extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        liked : false,
+                    };
+                }
+
+                render() {
+                    return e('button',{ onClick : () => { this.setState({ liked : true })}, type : 'submit'},'Like'); // <button type="submit">Like</button>
+                }
+            }
+        </script>
+        <script>
+            ReactDOM.render(e(LikeButton),document.querySelector('#root'));
+        </script>
+    </body>
 </html>

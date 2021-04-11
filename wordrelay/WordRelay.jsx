@@ -1,55 +1,42 @@
 //파일을 쪼개는 경우 꼭 필요한 패키지 라이브러리를 가져와야한다.
 const React = require('react');
-const { Component } = React;
+const { useState, useRef } = React;
 
-class WordRelay extends React.Component {
-    state = {
-        word: '박은아',
-        value: '',
-        result: '',
-    };
+const WordRelay = () => {
+    const [Word, setWord] = useState('박은아');
+    const [value, setValue] = useState('');
+    const [result, setResult] = useState('');
+    const inputRef = useRef(null);
 
-    onSubmitForm = (e)=> {
+
+    const onSubmitForm = (e) => {
         e.preventDefault();
-        if(this.state.word[this.state.word.length -1] == this.state.value[0]) {
-            this.setState({
-                result: '딩동댕',
-                word : this.state.value,
-                value : '',
-            });
-            this.input.focus();
+        if(Word[Word.length -1] == value[0]) {
+            setResult('딩동댕');
+            setWord(value);
+            setValue('');
+            inputRef.current.focus();
         }   else{
-            this.setState({
-                result:'땡',
-                value:'',
-            });
-            this.input.focus();
+            setResult('땡');
+            setValue('');
+            inputRef.current.focus();
         }
     };
 
-    onRefInput = (c) => {
-        this.input = c;
+    const onChangeInput = (e) => {
+        setValue(e.target.value);
     };
 
-    onChangeInput = (e) => {
-        this.setState({ value: e.target.value });
-    };
-
-    input;
-
-    render(){
-        return (
-            <>
-                <div>{this.state.word}</div>
-                <form onSubmit={this.onSubmitForm}>
-                    <input ref={this.onRefInput} value={this.state.value} onChange={this.onChangeInput}/>
-                    <button>입력!</button>
-                </form>
-                <div>{this.state.result}</div>
-            </>
-        );
-    }
-
+    return (
+        <>
+            <div>{Word}</div>
+            <form onSubmit = {onSubmitForm}>
+                <input ref={inputRef} value={value} onChange={onChangeInput}/>
+                <button>입력</button>
+            </form>
+            <div>{result}</div>
+        </>
+    );
 }
 
 //다른 곳에서도 사용할 수 있게 모듈화 한다.

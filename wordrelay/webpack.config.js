@@ -1,6 +1,7 @@
 //webpack은 webpack.config.js 에서 모두 설정한다.
 //node에서 경로를 쉽게 조작하기 위해 path라는 함수를 준다.
 const path = require('path');
+const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'); //webpack의 변경을 하면 핫리로딩을 해준다. 기존 데이터를 유지하면서 새로고침 해준다.
 
 module.exports = {
     name: 'wordrelay-setting',
@@ -20,13 +21,21 @@ module.exports = {
             loader: 'babel-loader',
             options: {
                 presets: ['@babel/preset-env','@babel/preset-react'],
-                plugins: ['@babel/plugin-proposal-class-properties'],
+                plugins: ['@babel/plugin-proposal-class-properties','react-refresh/babel'],
             },
           },
         ],
       },
+    plugins: [
+      new RefreshWebpackPlugin()
+    ],
     output: {
        path: path.join(__dirname,'dist'), //현재 폴더경로에서 dist를 가져온다.
-       filename: 'app.js'
+       filename: 'app.js',
+        publicPath: '/dist/',
     }, //출력
+    devServer: {
+      publicPath: '/dist/', //소스코드의 변경점이 생기면 자동으로 dev 스크립트를 인식한다.
+      hot:true,
+    },
 };

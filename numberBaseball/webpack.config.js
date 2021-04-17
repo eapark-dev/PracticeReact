@@ -1,5 +1,6 @@
 const path = require('path');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const { AutomaticPrefetchPlugin } = require('webpack');
 
 module.exports = {
   name: 'number-baseball-dev',
@@ -18,19 +19,14 @@ module.exports = {
       options: {
         presets: [
           ['@babel/preset-env', {
-            targets: {browsers: ['last 2 chrome versions']},
-            debug: true,
+            targets: {"chrome": "88"},
           }],
           '@babel/preset-react',
         ],
-        plugins: ['@babel/plugin-proposal-class-properties','react-refresh/babel'],
+        plugins: ['@babel/plugin-proposal-class-properties'],
       },
-      exclude: path.join(__dirname, 'node_modules'),
     }],
   },
-  plugins: [
-    new ReactRefreshWebpackPlugin(),
-  ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',

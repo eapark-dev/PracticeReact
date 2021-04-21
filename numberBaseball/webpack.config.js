@@ -1,10 +1,11 @@
 const path = require('path');
+process.env.NODE_EVN  = "production" ; //production 모드
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { AutomaticPrefetchPlugin } = require('webpack');
 
 module.exports = {
   name: 'number-baseball-dev',
-  mode: 'development',
+  mode: 'production',
   devtool: 'inline-source-map',
   resolve: {
     extensions: ['.js', '.jsx'],

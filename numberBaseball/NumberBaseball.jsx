@@ -67,8 +67,12 @@ class NumberBaseball extends Component {
         this.setState({ value: e.target.value });
     };
 
+    inputRef = createRef();
+
     render(){
         //map이란 리액트에서 반복문을 사용하는 함수
+        //render 안에 this.state를 사용하면 무한 반복되어서 성능이 안좋아진다.
+        //render안에 무조건 this.state사용하면 안된다.
         return (
             <>
                 <h1>{this.state.result}</h1>

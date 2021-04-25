@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Try from './Try';
 
 function getNumbers () { //숫자 네 개를 겹치지 않고 랜덤하게 뽑는 함수
+    console.log('getNumbers');
     const candidate = [1,2,3,4,5,6,7,8,9];
     const array = [];
     for(let i =0; i< 4; i += 1){
@@ -67,7 +68,7 @@ class NumberBaseball extends Component {
         this.setState({ value: e.target.value });
     };
 
-    inputRef = createRef();
+    //inputRef = createRef();
 
     render(){
         //map이란 리액트에서 반복문을 사용하는 함수
@@ -78,6 +79,7 @@ class NumberBaseball extends Component {
                 <h1>{this.state.result}</h1>
                 <form onSubmit={this.onSubmitForm}>
                     <input maxLength={4} value={this.state.value} onChange={this.onChangeInput}/>
+                    <button>압력!</button>
                 </form>
                 <div>시도: {this.state.tries.length} </div>
                 <ul>

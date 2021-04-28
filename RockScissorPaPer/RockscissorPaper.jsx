@@ -22,12 +22,24 @@ const computerChoice = (imgCoord) => {
   })[0];
 };
 
+//    result, imgCoord, score
+// componentDidMount
+// componentDidUpdate
+// componentWillUnmount
+
+//hooks에서는 useeffect하나가 한개씩 담당한다.
+
 const RockscissorPaper = () => {
   const [result, setResult] = useState('');
   const [imgCoord, setImgCoord] = useState(rspCoords.바위);
   const [score, setScore] = useState(0);
   const interval = useRef();
 
+  //화면이 바뀌기 전에 발생한다.
+  // useRayoutEffect; 
+
+
+  // 배열에는 꼭 useEffectf를 다시 실행할 값만 넣어야함.
   useEffect(() => { // componentDidMount, componentDidUpdate 역할(1대1 대응은 아님)
     console.log('다시 실행');
     interval.current = setInterval(changeHand, 100);

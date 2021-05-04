@@ -16,7 +16,7 @@ function getWinNumbers() {
 //useCallback은 함수 자체를 기억하는 것
 //useMemo는 리턴 값을 기억하고 있는 것
 
-//hooks에서는 순서가 매우 중요하다.
+//hooks
 const Lotto = () => {
     const LottoNumbers = useMemo( () => getWinNumbers(), []); //리턴값을 기억해 한번만 호출시키게 한다.
     const [winNumbers, setWinNumbers] = useState(LottoNumbers);

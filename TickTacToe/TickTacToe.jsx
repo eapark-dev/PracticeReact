@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useReducer, useCallback} from 'react';
+import React, {useState, useEffect, useReducer, useCallback } from 'react';
 import Table from './Table';
 
 const initialState = {
@@ -17,6 +17,8 @@ export const CLICK_CELL = 'CLICK_CELL';
 export const CHANGE_TURN = 'CHANGE_TURN';
 export const RESET_GAME = 'RESET_GAME';
 
+//sate를 바꿀 때에는 불변성이 중요하다. 
+//한자리에 모아둔 객체를 사용하기 위해서 reducer 사용
 const reducer = (state, action) => {
     switch (action.type) {
         case 'SET_WINNER' :
